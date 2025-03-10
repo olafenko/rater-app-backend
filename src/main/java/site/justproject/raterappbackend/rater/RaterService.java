@@ -15,7 +15,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+
 public class RaterService {
+
 
     private final RandomIdGenerator randomIdPairGenerator;
     private final BattleRepository battleRepository;
@@ -67,20 +69,16 @@ public class RaterService {
 
         RatingPair ratingPair;
 
-        // tu koniec trzeba ustawic rating wygranego i przegranego
         if(winnerId == first.getId()){
             ratingPair = ratingCalculator.calculateRatings(first.getRating(),second.getRating());
             first.setRating(ratingPair.winnerRating());
             second.setRating(ratingPair.loserRating());
         } else {
+
             ratingPair = ratingCalculator.calculateRatings(second.getRating(),first.getRating());
             first.setRating(ratingPair.loserRating());
             second.setRating(ratingPair.winnerRating());
         }
-
-
-
-
 
 
         battleRepository.deleteById(battleId);
