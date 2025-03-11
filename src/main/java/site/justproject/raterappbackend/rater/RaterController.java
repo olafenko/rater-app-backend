@@ -1,16 +1,14 @@
 package site.justproject.raterappbackend.rater;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import site.justproject.raterappbackend.rater.dtos.AnswerRequest;
 import site.justproject.raterappbackend.rater.dtos.BattleResponse;
 import site.justproject.raterappbackend.rater.dtos.CharacterResponse;
 
 import java.util.List;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 class RaterController {
 
@@ -20,7 +18,7 @@ class RaterController {
     public RaterController(RaterService raterService) {
         this.raterService = raterService;
     }
-    
+
     @GetMapping("/battle")
     public BattleResponse getBattle(){
 
