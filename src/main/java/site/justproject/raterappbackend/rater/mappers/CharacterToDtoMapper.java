@@ -1,12 +1,13 @@
-package site.justproject.raterappbackend.rater;
+package site.justproject.raterappbackend.rater.mappers;
 
 import org.springframework.stereotype.Service;
+import site.justproject.raterappbackend.rater.dtos.CharacterResponse;
 import site.justproject.raterappbackend.rater.entities.CharacterEntity;
 
 import java.util.function.Function;
 
 @Service
-public class CharacterToDtoMapper implements Function<CharacterEntity,CharacterResponse> {
+public class CharacterToDtoMapper implements Function<CharacterEntity, CharacterResponse> {
 
 
     @Override

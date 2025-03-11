@@ -4,9 +4,10 @@ package site.justproject.raterappbackend.rater;
 import org.springframework.stereotype.Service;
 import site.justproject.raterappbackend.rater.dtos.BattleIdPair;
 import site.justproject.raterappbackend.rater.dtos.BattleResponse;
+import site.justproject.raterappbackend.rater.dtos.CharacterResponse;
 import site.justproject.raterappbackend.rater.entities.BattleEntity;
 import site.justproject.raterappbackend.rater.entities.CharacterEntity;
-import site.justproject.raterappbackend.rater.entities.RandomIdGenerator;
+import site.justproject.raterappbackend.rater.mappers.CharacterToDtoMapper;
 import site.justproject.raterappbackend.rater.repositories.BattleRepository;
 import site.justproject.raterappbackend.rater.repositories.CharacterRepository;
 
@@ -88,9 +89,9 @@ public class RaterService {
 
     public List<CharacterResponse> getLeaderboard() {
 
-        List<CharacterEntity> allSortedByLeaderboad = characterRepository.getAllSortedByLeaderboad();
+        List<CharacterEntity> allSortedByRating = characterRepository.allSortedByRating();
 
-        return allSortedByLeaderboad.stream()
+        return allSortedByRating.stream()
                 .map(characterToDtoMapper)
                 .toList();
     }

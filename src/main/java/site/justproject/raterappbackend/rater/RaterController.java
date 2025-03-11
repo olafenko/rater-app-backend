@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import site.justproject.raterappbackend.rater.dtos.AnswerRequest;
 import site.justproject.raterappbackend.rater.dtos.BattleResponse;
+import site.justproject.raterappbackend.rater.dtos.CharacterResponse;
 
 import java.util.List;
 
