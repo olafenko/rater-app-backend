@@ -55,7 +55,7 @@ public class RaterService {
             throw new RuntimeException("Not this time :)");
         }
 
-        //zmiana rankingu
+
 
         Optional<CharacterEntity> firstOptional = characterRepository.findById(battle.getFirstId());
         Optional<CharacterEntity> secondOptional = characterRepository.findById(battle.getSecondId());
@@ -67,15 +67,14 @@ public class RaterService {
         CharacterEntity first = firstOptional.get();
         CharacterEntity second = secondOptional.get();
 
-        RatingPair ratingPair;
-
+        //zmiana rankingu
         if(winnerId == first.getId()){
-            ratingPair = ratingCalculator.calculateRatings(first.getRating(),second.getRating());
+            RatingPair ratingPair = ratingCalculator.calculateRatings(first.getRating(),second.getRating());
             first.setRating(ratingPair.winnerRating());
             second.setRating(ratingPair.loserRating());
         } else {
 
-            ratingPair = ratingCalculator.calculateRatings(second.getRating(),first.getRating());
+            RatingPair ratingPair = ratingCalculator.calculateRatings(second.getRating(),first.getRating());
             first.setRating(ratingPair.loserRating());
             second.setRating(ratingPair.winnerRating());
         }

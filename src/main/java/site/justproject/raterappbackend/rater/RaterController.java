@@ -34,7 +34,7 @@ class RaterController {
     @PostMapping("/answer")
     public void answer(@RequestBody AnswerRequest answerRequest){
 
-        raterService.processWinner(answerRequest.id(),answerRequest.winnerId());
+        raterService.processWinner(answerRequest.battleId(),answerRequest.winnerId());
 
     }
 
