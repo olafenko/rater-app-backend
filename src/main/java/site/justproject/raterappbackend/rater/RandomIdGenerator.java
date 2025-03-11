@@ -7,7 +7,7 @@ import site.justproject.raterappbackend.rater.dtos.BattleIdPair;
 import java.util.Random;
 
 @Service
-public class RandomIdGenerator {
+class RandomIdGenerator {
 
     private final static Random random = new Random();
 

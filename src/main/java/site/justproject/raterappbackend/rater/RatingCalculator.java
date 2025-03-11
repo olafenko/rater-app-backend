@@ -1,6 +1,8 @@
 package site.justproject.raterappbackend.rater;
 
-public class RatingCalculator {
+import site.justproject.raterappbackend.rater.entities.RatingPair;
+
+class RatingCalculator {
 
     private final static int K = 20;
 
