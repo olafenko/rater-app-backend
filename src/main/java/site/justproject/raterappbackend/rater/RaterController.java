@@ -20,13 +20,7 @@ class RaterController {
     public RaterController(RaterService raterService) {
         this.raterService = raterService;
     }
-
-    @GetMapping("/hello")
-    public String welcome(){
-        return "Welcome!";
-    }
-
-
+    
     @GetMapping("/battle")
     public BattleResponse getBattle(){
 
