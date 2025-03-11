@@ -11,6 +11,7 @@ import site.justproject.raterappbackend.rater.repositories.BattleRepository;
 import site.justproject.raterappbackend.rater.repositories.CharacterRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,12 +23,14 @@ public class RaterService {
     private final RandomIdGenerator randomIdPairGenerator;
     private final BattleRepository battleRepository;
     private final CharacterRepository characterRepository;
+    private final CharacterToDtoMapper characterToDtoMapper;
     private final RatingCalculator ratingCalculator = new RatingCalculator();
 
-    public RaterService(RandomIdGenerator randomIdPairGenerator, BattleRepository battleRepository, CharacterRepository characterRepository) {
+    public RaterService(RandomIdGenerator randomIdPairGenerator, BattleRepository battleRepository, CharacterRepository characterRepository, CharacterToDtoMapper characterToDtoMapper) {
         this.randomIdPairGenerator = randomIdPairGenerator;
         this.battleRepository = battleRepository;
         this.characterRepository = characterRepository;
+        this.characterToDtoMapper = characterToDtoMapper;
     }
 
     public BattleResponse generateBattle() {
@@ -81,6 +84,14 @@ public class RaterService {
 
 
         battleRepository.deleteById(battleId);
+    }
 
+    public List<CharacterResponse> getLeaderboard() {
+
+        List<CharacterEntity> allSortedByLeaderboad = characterRepository.getAllSortedByLeaderboad();
+
+        return allSortedByLeaderboad.stream()
+                .map(characterToDtoMapper)
+                .toList();
     }
 }

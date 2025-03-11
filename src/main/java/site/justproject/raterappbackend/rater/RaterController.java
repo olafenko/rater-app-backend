@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import site.justproject.raterappbackend.rater.dtos.AnswerRequest;
 import site.justproject.raterappbackend.rater.dtos.BattleResponse;
 
+import java.util.List;
+
 @RestController
 class RaterController {
 
@@ -36,6 +38,11 @@ class RaterController {
 
         raterService.processWinner(answerRequest.battleId(),answerRequest.winnerId());
 
+    }
+
+    @GetMapping("/leaderboard")
+    public List<CharacterResponse> getLeaderboard(){
+        return raterService.getLeaderboard();
     }
 
 
