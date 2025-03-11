@@ -26,7 +26,7 @@ public class CharacterRepository {
     public List<CharacterEntity> getAllSortedByLeaderboad() {
 
         return fakeDB.values().stream()
-                .sorted(Comparator.comparingInt(c -> c.getRating()))
-                .toList().reversed();
+                .sorted((p1,p2) -> p2.getRating() - p1.getRating())
+                .toList();
     }
 }
